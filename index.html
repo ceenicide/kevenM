@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoBot</title>
+
+    <!-- Importações CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/accordion-js@3.3.4/dist/accordion.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Importações JS -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "@google/generative-ai": "https://esm.run/@google/generative-ai"
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <!-- SVG do grafo -->
+                <svg viewBox="0 0 100 100" width="40" height="40">
+                    <circle cx="50" cy="20" r="8" class="node" />
+                    <circle cx="20" cy="70" r="8" class="node" />
+                    <circle cx="80" cy="70" r="8" class="node" />
+                    <line x1="50" y1="20" x2="20" y2="70" class="edge" />
+                    <line x1="50" y1="20" x2="80" y2="70" class="edge" />
+                    <line x1="20" y1="70" x2="80" y2="70" class="edge" />
+                </svg>
+            </div>
+            <h1>InfoBot</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="buttons-container">
+            <button id="btnTirarFoto" class="action-button">
+                <i class="fas fa-camera"></i> Tirar foto
+            </button>
+            <button id="btnEnviarFoto" class="action-button">
+                <i class="fas fa-upload"></i> Enviar foto
+            </button>
+            <button id="btnEnviarPrint" class="action-button">
+                <i class="fas fa-paste"></i> Enviar print
+            </button>
+            <button id="btnOutraQuestao" class="action-button" style="display: none;">
+                <i class="fas fa-redo"></i> Outra Questão
+            </button>
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+        </section>
+
+        <section class="responses-container">
+            <div class="accordion-container">
+                <div class="ac">
+                    <h2 class="ac-header">
+                        <button class="ac-trigger">Links</button>
+                    </h2>
+                    <div class="ac-panel">
+                        <div class="ac-content" id="linksContent"></div>
+                    </div>
+                </div>
+
+                <div class="ac">
+                    <h2 class="ac-header">
+                        <button class="ac-trigger">Aula Completa</button>
+                    </h2>
+                    <div class="ac-panel">
+                        <div class="ac-content" id="aulaContent"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Substitua a div loading-container existente por esta -->
+    <div class="loading-container">
+        <div class="complex-spinner">
+            <div class="hex-container">
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon center"></div>
+            </div>
+        </div>
+        <div class="loading-text">Processando sua imagem...</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/accordion-js@3.3.4/dist/accordion.min.js"></script>
+    <script type="module" src="api.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
